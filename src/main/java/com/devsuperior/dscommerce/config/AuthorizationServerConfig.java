@@ -70,6 +70,7 @@ public class AuthorizationServerConfig {
 	@Bean
 	@Order(2)
 	SecurityFilterChain asSecurityFilterChain(HttpSecurity http) throws Exception {
+
 		http.securityMatcher("oauth2/**", "/.well-known/**").with(OAuth2AuthorizationServerConfigurer.authorizationServer(), Customizer.withDefaults());
 
 		// @formatter:off
@@ -133,7 +134,7 @@ public class AuthorizationServerConfig {
 	}
 
 	@Bean
-	public AuthorizationServerSettings authorizationServerSettings() {
+	AuthorizationServerSettings authorizationServerSettings() {
 		return AuthorizationServerSettings.builder().build();
 	}
 
